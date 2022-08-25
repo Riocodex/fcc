@@ -22,6 +22,8 @@ async function main() {
     const contractFactory = new ethers.ContractFactory(abi , binary , wallet);
     console.log("deploying, please wait.....");
     const contract  = await contractFactory.deploy();
+    await contract.deployTransaction.wait(1);
+    console.log(`Contract Address:  ${contract.address}`)
     // const transactionReceipt = await contract.deployTransaction.wait(1);
     // console.log("here is the deployment receipt: ")
     // console.log(contract.deployTransaction);//this is the deployment reesponse..what u get after deploying a smart contract
